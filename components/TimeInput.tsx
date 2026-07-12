@@ -7,14 +7,7 @@ export default function TimeInput() {
   const [rawTime, setRawTime] = React.useState("");
   const [time, setTime] = React.useState<string>("");
 
-  const [test, setTest] = React.useState<number>(0);
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setTest(test => test + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  // const [millisecondsTime, setMillisecondsTime] = React.useState<string>("");
 
   function convertTime(str: string): string {
     if (str.length === 3) {
@@ -29,8 +22,6 @@ export default function TimeInput() {
     return str;
   }
 
-  // alert("hello"); // pages fails to load/render
-
   return <div style={{
     display: "flex",
     gap: "1rem",
@@ -43,26 +34,17 @@ export default function TimeInput() {
       </label>
       <input
         type="text"
-        // inputMode="numeric"
-        name="time"
+        inputMode="numeric"
         id="time"
         autoComplete="off"
         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
         value={rawTime}
-        onChange={(e) => {
-          // alert("change" + e.currentTarget.value);
-        }}
         onInput={(e) => {
-          // alert("input" + e.currentTarget.value);
           const value = e.currentTarget.value;
           setRawTime(value);
           setTime(convertTime(value));
         }}
       />
-    </div>
-    
-    <div>
-      {test}
     </div>
 
     <div style={{
@@ -72,5 +54,12 @@ export default function TimeInput() {
     }}>
       {time}
     </div>
+
+    <input
+      type="hidden"
+      name="time"
+      value={rawTime}
+    />
+
   </div>
 }

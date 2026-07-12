@@ -2,7 +2,7 @@ import { supabase } from "./lib/superbase";
 
 export default async function Home() {
   const { data } = await supabase
-    .from("times")
+    .from("results")
     .select("*")
     .order("id");
 
@@ -19,9 +19,9 @@ export default async function Home() {
           key={team.id}
           className="flex justify-between border-b py-2"
         >
-          <span>{team.name}</span>
+          <span>{team.athlete}</span>
           <span>{team.time}</span>
-          <span>{team.sport}</span>
+          <span>{team.category}</span>
         </div>
       ))}
     </main>
