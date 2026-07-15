@@ -1,29 +1,32 @@
 "use client"
 
 import React from "react";
+import { formatTime } from "../app/lib/time";
+
+// TODO
+// - Do we want to store rawTime in DB?
 
 export default function TimeInput() {
 
-  // TODO
-  // - limit input to 6 characters
-  // - time validation
-  // - convert time to milliseconds for storage in database
-
   const [rawTime, setRawTime] = React.useState("");
-  const [time, setTime] = React.useState<string>("");
+  const [displayTime, setDisplayTime] = React.useState<string>("");
 
-  // const [millisecondsTime, setMillisecondsTime] = React.useState<string>("");
+  const [millisecondsTime, setMillisecondsTime] = React.useState<number>(0);
 
-  function convertTime(str: string): string {
+  function convertToMilliseconds(str: string): number {
     const digits = str.replace(/\D/g, "");
 
-    // How do we handle invalid numbers? eg. 189 
-
-    if (digits.length <= 2) return digits;
+    if (digits.length <= 2) return parseInt(digits) * 1000;
     if (digits.length <= 4)
-      return `${digits.slice(0, -2)}:${digits.slice(-2)}`;
+      return (
+        parseInt(digits.slice(0, -2)) * 60 * 1000 +
+        parseInt(digits.slice(-2)) * 1000
+      );
 
-    return `${digits.slice(0, -4)}:${digits.slice(-4, -2)}:${digits.slice(-2)}`;
+    return (parseInt(digits.slice(0, -4)) * 60 * 1000
+      + parseInt(digits.slice(-4, -2)) * 1000
+      + parseInt(digits.slice(-2)) * 10
+    );
   }
 
   return <div style={{
@@ -35,41 +38,39 @@ export default function TimeInput() {
     <div style={{
       flex: 1
     }}>
-      <label htmlFor="time" className="block text-sm font-medium text-gray-700">
+      <label htmlFor="time" className="block text-sm font-medium text-gray-300">
         Time
       </label>
-      <input
-        type="text"
-        inputMode="numeric"
-        id="time"
-        autoComplete="off"
+      <div className="mt-1 flex flex-row items-center">
+        <input
+          type="text"
+          inputMode="numeric"
+          id="time"
+          autoComplete="off"
 
-        minLength={3}
-        maxLength={6}
+          minLength={3}
+          maxLength={6}
 
-        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-        value={rawTime}
-        onInput={(e) => {
-          const value = e.currentTarget.value;
-          setRawTime(value);
-          setTime(convertTime(value));
-        }}
-      />
+          className="flex-1 block w-full border border-gray-500 rounded-sm p-2"
+          value={rawTime}
+          onInput={(e) => {
+            const value = e.currentTarget.value;
+            const milli = convertToMilliseconds(value);
+            setRawTime(value);
+            setDisplayTime(formatTime(milli));
+            setMillisecondsTime(milli);
+          }}
+        />
+        <div className="flex-2 text-xl text-white text-center">
+          {displayTime}
+        </div>
+      </div>
     </div>
-
-    <div style={{
-      flex: 1.5,
-      textAlign: "center",
-      fontSize: 25
-    }}>
-      {time}
-    </div>
-
 
     <input // hidden input for form submission
       type="hidden"
       name="time"
-      value={rawTime}
+      value={millisecondsTime}
     />
 
   </div>

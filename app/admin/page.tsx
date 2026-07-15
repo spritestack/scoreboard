@@ -1,6 +1,7 @@
 import SportInput from "../../components/SportInput";
 import TimeInput from "../../components/TimeInput";
 import { addResult } from "../admin/actions";
+import Link from "next/link";
 
 // TODO
 // - Add message to confirm data sent to database or failed!
@@ -8,39 +9,48 @@ import { addResult } from "../admin/actions";
 export default function AdminPage() {
 
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold">
-        Add Result
-      </h1>
+    <main className="h-screen flex flex-col p-6">
 
-      <form action={addResult} className="mt-6 space-y-4">
+      <div className="flex flex-row justify-between items-center mb-4 font-sans">
+        <h1 className="text-3xl font-bold">
+          Add
+        </h1>
+        <Link href="/" className="text-3xl font-bold rotate-45">+</Link>
+      </div>
+
+      <form action={addResult} className="space-y-4">
+
+        <SportInput />
+
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-300">
             Name
           </label>
           <input
             type="text"
             name="name"
             id="name"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            className="mt-1 w-full border border-gray-500 rounded-sm p-2"
           />
         </div>
 
         <TimeInput />
 
-        <SportInput />
-
-        <input
-        type="date"
-        name="race_date"
-        id="race_date"
-        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-        defaultValue={new Date().toISOString().split("T")[0]} // default to today
-        />
-
+        <div>
+          <label htmlFor="race_date" className="block text-sm font-medium text-gray-300">
+            Race Date
+          </label>
+          <input
+            type="date"
+            name="race_date"
+            id="race_date"
+            className="mt-1 block w-full border border-gray-500 rounded-sm p-2"
+            defaultValue={new Date().toISOString().split("T")[0]} // default to today
+          />
+        </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          className="border w-full mt-6 p-2 text-orange-500 border-orange-500 rounded-sm"
         >
           Add Result
         </button>

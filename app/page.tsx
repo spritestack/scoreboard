@@ -1,12 +1,13 @@
 import ResultsTable from "../components/ResultsTable";
-// import { supabase } from "./lib/superbase";
-import data from "@/data/results.json";
+import Link from "next/link";
+import { supabase } from "./lib/supabase";
+// import data from "@/data/results.json";
 
 export default async function Home() {
-  // const { data } = await supabase
-  //   .from("results")
-  //   .select("*")
-  //   .order("id");
+  const { data } = await supabase
+    .from("results")
+    .select("*")
+  // .order("time", { ascending: true });
   // console.log(data);
 
   return (
@@ -15,7 +16,7 @@ export default async function Home() {
         <h1 className="text-3xl font-bold">
           Results
         </h1>
-        <button className="text-3xl font-bold mr-3">+</button>
+        <Link href="/admin" className="text-3xl font-bold">+</Link>
       </div>
 
       <ResultsTable data={data} />
