@@ -1,35 +1,11 @@
 import SportInput from "../../components/SportInput";
 import TimeInput from "../../components/TimeInput";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { supabase } from "../lib/superbase";
+import { addResult } from "../admin/actions";
+
+// TODO
+// - Add message to confirm data sent to database or failed!
 
 export default function AdminPage() {
-
-  async function addResult(formData: FormData) {
-    "use server";
-
-    const name = formData.get("name");
-    const time = formData.get("time");
-    const sport = formData.get("sport");
-    // console.log(name, time, sport);
-
-    // const { status, statusText } = 
-    await supabase
-      .from("results")
-      .insert({
-        athlete: name,
-        time: time,
-        category: sport,
-        race_date: "2025-07-12"
-      })
-
-    // console.log(status);
-    // console.log(statusText);
-
-    revalidatePath("/");
-    redirect("/");
-  }
 
   return (
     <main className="p-10">
@@ -50,9 +26,17 @@ export default function AdminPage() {
           />
         </div>
 
+        <TimeInput />
+
         <SportInput />
 
-        <TimeInput />
+        <input
+        type="date"
+        name="race_date"
+        id="race_date"
+        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        defaultValue={new Date().toISOString().split("T")[0]} // default to today
+        />
 
         <button
           type="submit"

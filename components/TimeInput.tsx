@@ -4,22 +4,26 @@ import React from "react";
 
 export default function TimeInput() {
 
+  // TODO
+  // - limit input to 6 characters
+  // - time validation
+  // - convert time to milliseconds for storage in database
+
   const [rawTime, setRawTime] = React.useState("");
   const [time, setTime] = React.useState<string>("");
 
   // const [millisecondsTime, setMillisecondsTime] = React.useState<string>("");
 
   function convertTime(str: string): string {
-    if (str.length === 3) {
-      return `${str[0]}:${str.slice(1)}`;
-    } else if (str.length === 4) {
-      return `${str.slice(0, 2)}:${str.slice(2)}`;
-    } else if (str.length === 5) {
-      return `${str[0]}:${str.slice(1, 3)}:${str.slice(3)}`;
-    } else if (str.length === 6) {
-      return `${str.slice(0, 2)}:${str.slice(2, 4)}:${str.slice(4)}`;
-    }
-    return str;
+    const digits = str.replace(/\D/g, "");
+
+    // How do we handle invalid numbers? eg. 189 
+
+    if (digits.length <= 2) return digits;
+    if (digits.length <= 4)
+      return `${digits.slice(0, -2)}:${digits.slice(-2)}`;
+
+    return `${digits.slice(0, -4)}:${digits.slice(-4, -2)}:${digits.slice(-2)}`;
   }
 
   return <div style={{
@@ -28,7 +32,9 @@ export default function TimeInput() {
     alignItems: "flex-end",
     justifyContent: "space-around"
   }}>
-    <div>
+    <div style={{
+      flex: 1
+    }}>
       <label htmlFor="time" className="block text-sm font-medium text-gray-700">
         Time
       </label>
@@ -37,6 +43,10 @@ export default function TimeInput() {
         inputMode="numeric"
         id="time"
         autoComplete="off"
+
+        minLength={3}
+        maxLength={6}
+
         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
         value={rawTime}
         onInput={(e) => {
@@ -48,14 +58,15 @@ export default function TimeInput() {
     </div>
 
     <div style={{
-      flex: 1,
+      flex: 1.5,
       textAlign: "center",
       fontSize: 25
     }}>
       {time}
     </div>
 
-    <input
+
+    <input // hidden input for form submission
       type="hidden"
       name="time"
       value={rawTime}

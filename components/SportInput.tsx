@@ -40,7 +40,7 @@ export default function SportInput() {
       </button>
     ))}
 
-    <input
+    <input // hidden input for form submission
       type="hidden"
       name="sport"
       value={sport}
@@ -48,44 +48,3 @@ export default function SportInput() {
 
   </div>
 }
-
-export function SportInput2() {
-
-  const [sport, setSport] = useState(Sport.bike);
-
-  return <fieldset>
-    <legend className="mb-2 font-medium">Sport</legend>
-
-    <div className="grid grid-cols-3 gap-2">
-      {sports.map((s) => (
-        <label key={s.id}>
-          <input
-            type="radio"
-            name="sport"
-            value={s.id}
-            checked={sport === s.id}
-            onChange={() => setSport(s.id)}
-            className="sr-only"
-          />
-
-          <div
-            className={`
-            rounded-lg
-            py-4
-            text-center
-            cursor-pointer
-            select-none
-            ${sport === s.id
-                ? "bg-blue-600 text-white"
-                : "bg-gray-100"
-              }
-          `}
-          >
-            {s.label}
-          </div>
-        </label>
-      ))}
-    </div>
-  </fieldset>
-}
-

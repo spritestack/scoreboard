@@ -1,29 +1,25 @@
-import { supabase } from "./lib/superbase";
+import ResultsTable from "../components/ResultsTable";
+// import { supabase } from "./lib/superbase";
+import data from "@/data/results.json";
 
 export default async function Home() {
-  const { data } = await supabase
-    .from("results")
-    .select("*")
-    .order("id");
-
-    console.log(data);
+  // const { data } = await supabase
+  //   .from("results")
+  //   .select("*")
+  //   .order("id");
+  // console.log(data);
 
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold mb-6">
-        Scoreboard
-      </h1>
+    <main className="h-screen flex flex-col p-6">
+      <div className="flex flex-row justify-between items-center mb-4 font-sans">
+        <h1 className="text-3xl font-bold">
+          Results
+        </h1>
+        <button className="text-3xl font-bold mr-3">+</button>
+      </div>
 
-      {data?.map(team => (
-        <div
-          key={team.id}
-          className="flex justify-between border-b py-2"
-        >
-          <span>{team.athlete}</span>
-          <span>{team.time}</span>
-          <span>{team.category}</span>
-        </div>
-      ))}
-    </main>
+      <ResultsTable data={data} />
+
+    </main >
   );
 }
