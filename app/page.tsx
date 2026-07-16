@@ -16,7 +16,7 @@ export default async function Home() {
         <h1 className="text-3xl font-bold">
           Results
         </h1>
-        <Link href="/admin" className="text-3xl font-bold">+</Link>
+        <Link href="/admin" className="text-3xl font-bold mr-2">+</Link>
       </div>
 
       <ResultsTable data={data} />

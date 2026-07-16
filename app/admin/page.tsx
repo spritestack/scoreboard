@@ -4,6 +4,8 @@ import { addResult } from "../admin/actions";
 import Link from "next/link";
 
 // TODO
+// - Validate form inputs before submission (gray out submit button until valid)
+// - Remember last selected sport and preselect it when adding new result
 // - Add message to confirm data sent to database or failed!
 
 export default function AdminPage() {
@@ -15,14 +17,14 @@ export default function AdminPage() {
         <h1 className="text-3xl font-bold">
           Add
         </h1>
-        <Link href="/" className="text-3xl font-bold rotate-45">+</Link>
+        <Link href="/" className="text-3xl font-bold rotate-45 mr-2">+</Link>
       </div>
 
       <form action={addResult} className="space-y-4">
 
         <SportInput />
 
-        <div>
+        <div className="mt-7">
           <label htmlFor="name" className="block text-sm font-medium text-gray-300">
             Name
           </label>
@@ -36,7 +38,7 @@ export default function AdminPage() {
 
         <TimeInput />
 
-        <div>
+        <div style={{ width: "100%" }}>
           <label htmlFor="race_date" className="block text-sm font-medium text-gray-300">
             Race Date
           </label>
@@ -51,7 +53,7 @@ export default function AdminPage() {
         </div>
         <button
           type="submit"
-          className="border w-full mt-6 p-2 text-orange-500 border-orange-500 rounded-sm"
+          className="border w-full mt-10 p-2 text-orange-500 border-orange-500 rounded-sm"
         >
           Add Result
         </button>
