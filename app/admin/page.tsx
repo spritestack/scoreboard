@@ -4,6 +4,7 @@ import { addResult } from "../admin/actions";
 import Link from "next/link";
 
 // TODO
+// - Add an update page to edit a result
 // - Validate form inputs before submission (gray out submit button until valid)
 // - Remember last selected sport and preselect it when adding new result
 // - Add message to confirm data sent to database or failed!
@@ -33,6 +34,7 @@ export default function AdminPage() {
             name="name"
             id="name"
             className="mt-1 w-full border border-gray-500 rounded-sm p-2"
+            required
           />
         </div>
 
@@ -54,6 +56,7 @@ export default function AdminPage() {
         <button
           type="submit"
           className="border w-full mt-10 p-2 text-orange-500 border-orange-500 rounded-sm"
+          disabled={false} // TODO: disable until form is valid
         >
           Add Result
         </button>

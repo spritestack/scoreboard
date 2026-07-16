@@ -29,6 +29,7 @@ export default function SportInput() {
       type="hidden"
       name="sport"
       value={sport}
+      required
     />
 
   </div>

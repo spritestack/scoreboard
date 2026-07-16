@@ -7,6 +7,7 @@ import { formatTime } from "../app/lib/time";
 
 // TODO
 // - find duplicate names and exclude slower times
+// - Animate in the results
 
 export default function ResultsTable({ data }: { data: Result[] | null }) {
   const [sport, setSport] = useState(Sport.bike);

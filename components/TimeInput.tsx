@@ -74,6 +74,7 @@ export default function TimeInput() {
       type="hidden"
       name="time"
       value={millisecondsTime}
+      required
     />
 
   </div>
