@@ -16,6 +16,8 @@ export default function TimeInput() {
   function convertToMilliseconds(str: string): number {
     const digits = str.replace(/\D/g, "");
 
+    if (isNaN(parseInt(digits))) return 0;
+
     if (digits.length <= 2) return parseInt(digits) * 1000;
     if (digits.length <= 4)
       return (
@@ -41,7 +43,7 @@ export default function TimeInput() {
       <label htmlFor="time" className="block text-sm font-medium text-gray-300">
         Time
       </label>
-      <div className="mt-1 flex flex-row items-center">
+      <div className="mt-1 flex flex-row items-center gap-3">
         <input
           type="text"
           inputMode="numeric"
@@ -61,6 +63,7 @@ export default function TimeInput() {
             setMillisecondsTime(milli);
           }}
         />
+        <div className="text-gray-500">{"->"}</div>
         <div className="flex-2 text-xl text-white text-center">
           {displayTime}
         </div>

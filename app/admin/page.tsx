@@ -44,7 +44,7 @@ export default function AdminPage() {
             type="date"
             name="race_date"
             id="race_date"
-            className="mt-1 block w-full border border-gray-500 rounded-sm p-2"
+            className="mt-1 w-full border border-gray-500 rounded-sm p-2"
             defaultValue={new Date().toISOString().split("T")[0]} // default to today
           />
         </div>
