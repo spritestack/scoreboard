@@ -45,7 +45,7 @@ export default function AdminPage() {
             name="race_date"
             id="race_date"
             className="mt-1 border border-gray-500 rounded-sm p-2"
-            style={{ width: "100%" }}
+            style={{ width: "50%" }}
             defaultValue={new Date().toISOString().split("T")[0]} // default to today
           />
         </div>
