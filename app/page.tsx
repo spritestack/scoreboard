@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import ResultsTable from "../components/ResultsTable";
 import Link from "next/link";
 import { supabase } from "./lib/supabase";

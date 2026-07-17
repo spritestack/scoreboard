@@ -6,6 +6,7 @@ import { Result, Sport } from "./../app/lib/types";
 import { formatTime } from "../app/lib/time";
 
 // TODO
+// - Add reload button to refresh results from DB
 // - find duplicate names and exclude slower times
 // - Animate in the results
 
@@ -41,19 +42,18 @@ export default function ResultsTable({ data }: { data: Result[] | null }) {
           No results for {Sport[sport].toUpperCase()}
         </div>
       ) :
-      <div className="flex-1 overflow-y-scroll">
-        <table className="w-full">
-          <tbody>
-            {results.map((r) => (
-              <tr className="border-b border-gray-700" key={r.id}>
-                <td>{r.athlete}</td>
-                <td className="text-right py-3">{formatTime(r.time)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>}
-
+        <div className="flex-1 overflow-y-scroll">
+          <table className="w-full">
+            <tbody>
+              {results.map((r) => (
+                <tr className="border-b border-gray-700" key={r.id}>
+                  <td>{r.athlete}</td>
+                  <td className="text-right py-3">{formatTime(r.time)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>}
     </div>
   );
 }

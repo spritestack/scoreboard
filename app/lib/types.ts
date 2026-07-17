@@ -6,9 +6,9 @@ export enum Sport {
 }
 
 export interface Result {
-  id: number;
+  id?: number;
   athlete: string; // name
   time: number; // time in milliseconds
   category: Sport;
-  race_date: string; // date in YYYY-MM-DD format
+  race_date?: string; // date in YYYY-MM-DD format
 }

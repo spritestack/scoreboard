@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { formatTime } from "../app/lib/time";
+import { formatTime, convertToMilliseconds } from "../app/lib/time";
 
 // TODO
 // - Do we want to store rawTime in DB?
@@ -12,24 +12,6 @@ export default function TimeInput() {
   const [displayTime, setDisplayTime] = React.useState<string>("");
 
   const [millisecondsTime, setMillisecondsTime] = React.useState<number>(0);
-
-  function convertToMilliseconds(str: string): number {
-    const digits = str.replace(/\D/g, "");
-
-    if (isNaN(parseInt(digits))) return 0;
-
-    if (digits.length <= 2) return parseInt(digits) * 1000;
-    if (digits.length <= 4)
-      return (
-        parseInt(digits.slice(0, -2)) * 60 * 1000 +
-        parseInt(digits.slice(-2)) * 1000
-      );
-
-    return (parseInt(digits.slice(0, -4)) * 60 * 1000
-      + parseInt(digits.slice(-4, -2)) * 1000
-      + parseInt(digits.slice(-2)) * 10
-    );
-  }
 
   return <div style={{
     display: "flex",

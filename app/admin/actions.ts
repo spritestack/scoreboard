@@ -33,7 +33,7 @@ export async function addData(data: Result[]) {
 
   const dataWithDate = data.map(({ id, ...result }) => ({
     ...result,
-    race_date: new Date().toISOString().split("T")[0] // add today's date
+    race_date: new Date("06/01/26").toISOString().split("T")[0] // 31 May 2026 (don't ask)
   }));
 
   // console.log(dataWithDate[0]);
