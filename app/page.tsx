@@ -13,7 +13,7 @@ export default async function Home() {
   // console.log(data);
 
   return (
-    <main className="h-screen flex flex-col p-6">
+    <main className="h-dvh flex flex-col overflow-hidden p-6">
       <div className="flex flex-row justify-between items-center mb-4 font-sans">
         <h1 className="text-3xl font-bold">
           Results

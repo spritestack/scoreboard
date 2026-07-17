@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function AdminPage() {
 
   return (
-    <main className="h-screen flex flex-col p-6">
+    <main className="h-dvh flex flex-col overflow-hidden p-6">
 
       <div className="flex flex-row justify-between items-center mb-4 font-sans">
         <h1 className="text-3xl font-bold">
@@ -42,7 +42,7 @@ export default function AdminPage() {
 
         <div style={{ width: "100%" }}>
           <label htmlFor="race_date" className="block text-sm font-medium text-gray-300">
-            Race Date
+            Race day
           </label>
           <input
             type="date"
