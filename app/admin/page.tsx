@@ -1,5 +1,6 @@
 import SportInput from "../../components/SportInput";
 import TimeInput from "../../components/TimeInput";
+import WhiteCheckbox from "../../components/WhiteCheckbox";
 import { addResult } from "../admin/actions";
 import Link from "next/link";
 
@@ -40,19 +41,41 @@ export default function AdminPage() {
 
         <TimeInput />
 
-        <div style={{ width: "100%" }}>
-          <label htmlFor="race_date" className="block text-sm font-medium text-gray-300">
-            Race day
-          </label>
-          <input
-            type="date"
-            name="race_date"
-            id="race_date"
-            className="mt-1 border border-gray-500 rounded-sm p-2"
-            style={{ width: "50%" }}
-            defaultValue={new Date().toISOString().split("T")[0]} // default to today
-          />
+        <div className="flex flex-row gap-10">
+          <div>
+            <label htmlFor="race_date" className="block text-sm font-medium text-gray-300">
+              Race day
+            </label>
+            <input
+              type="date"
+              name="race_date"
+              id="race_date"
+              className="mt-1 border border-gray-500 rounded-sm p-2"
+              defaultValue={new Date().toISOString().split("T")[0]} // default to today
+            />
+
+          </div>
+          <div>
+            <label htmlFor="hyrox" className="block text-sm font-medium text-gray-300">
+              During hyrox
+            </label>
+            <input
+              type="checkbox"
+              name="hyrox"
+              id="hyrox"
+              defaultChecked={false}
+              className="h-5 w-5 rounded mt-1 accent-white"
+            />
+          </div>
+
+          <WhiteCheckbox>
+            During hyrox
+          </WhiteCheckbox>
+
         </div>
+
+
+
         <button
           type="submit"
           className="border w-full mt-10 p-2 text-orange-500 border-orange-500 rounded-sm"
