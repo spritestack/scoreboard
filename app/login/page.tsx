@@ -23,7 +23,7 @@ export default function Login() {
 
     return () => clearTimeout(timer);
 
-  }, [state]);
+  }, [state.timestamp]);
 
   return (
     <main className="h-dvh flex flex-col overflow-hidden p-6">
