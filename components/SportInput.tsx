@@ -1,13 +1,21 @@
 "use client"
 
-import { useState } from "react";
-import { Sport } from "./../app/lib/types";
+import { useEffect, useState } from "react";
+import { Sport, STORAGE_KEY } from "./../app/lib/types";
 import { SportButton } from "./SportButton";
 
 
 export default function SportInput() {
+  const [sport, setSport] = useState<Sport>(() => {
+    if (typeof window === "undefined") return Sport.bike;
 
-  const [sport, setSport] = useState(Sport.bike);
+    const storedSport = localStorage.getItem(STORAGE_KEY);
+    return storedSport ? (parseInt(storedSport) as Sport) : Sport.bike;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, sport.toString());
+  }, [sport]);
 
   return <div className="grid grid-cols-3 gap-4">
     {Object.values(Sport)

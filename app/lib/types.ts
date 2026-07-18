@@ -12,3 +12,5 @@ export interface Result {
   category: Sport;
   race_date?: string; // date in YYYY-MM-DD format
 }
+
+export const STORAGE_KEY = "scoreboard_selectedSport";

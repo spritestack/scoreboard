@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SportButton } from "./SportButton";
-import { Result, Sport } from "./../app/lib/types";
+import { Result, Sport, STORAGE_KEY } from "./../app/lib/types";
 import { formatTime } from "../app/lib/time";
 
 // TODO
@@ -11,7 +11,16 @@ import { formatTime } from "../app/lib/time";
 // - Animate in the results
 
 export default function ResultsTable({ data }: { data: Result[] | null }) {
-  const [sport, setSport] = useState(Sport.bike);
+  const [sport, setSport] = useState<Sport>(() => {
+    if (typeof window === "undefined") return Sport.bike;
+
+    const storedSport = localStorage.getItem(STORAGE_KEY);
+    return storedSport ? (parseInt(storedSport) as Sport) : Sport.bike;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, sport.toString());
+  }, [sport]);
 
   const results = useMemo(() => {
     return (data ?? []).filter((r) => r.category === sport)
