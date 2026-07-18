@@ -2,8 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { supabase } from "../lib/supabase";
 import { Result } from "../lib/types";
+import { COOKIE_NAME } from "../../middleware";
 
 export async function addResult(formData: FormData) {
 
@@ -30,6 +32,33 @@ export async function addResult(formData: FormData) {
   revalidatePath("/");
   redirect("/");
 }
+
+export async function login(
+  prevState: { error: string | null },
+  formData: FormData
+) {
+  const password = formData.get("password");
+
+  if (password !== process.env.ADMIN_PASSWORD) {
+    return {
+      error: "Invalid password",
+      timestamp: Date.now()
+    }
+  }
+
+  const cookieStore = await cookies(); 
+
+  cookieStore.set(COOKIE_NAME, "true", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    maxAge: 60 * 1, // 1 min
+    // maxAge: 60 * 60 * 24 * 30, // 30 days
+  });
+
+  redirect("/admin");
+}
+
 
 export async function addData(data: Result[]) {
 

@@ -65,7 +65,6 @@ export default function AdminPage() {
         <button
           type="submit"
           className="border w-full mt-10 p-2 text-orange-500 border-orange-500 rounded-sm"
-          disabled={false} // TODO: disable until form is valid
         >
           Add Result
         </button>

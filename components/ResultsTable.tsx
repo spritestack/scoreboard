@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { SportButton } from "./SportButton";
-import { Result, Sport, STORAGE_KEY } from "./../app/lib/types";
+import { Result, Sport, STORAGE_KEY } from "../app/lib/types";
 import { formatTime } from "../app/lib/time";
 
 // TODO
