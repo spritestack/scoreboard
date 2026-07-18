@@ -13,7 +13,7 @@ export default function HyroxInput() {
     >
       <input
         id={id}
-        name="checkbox"
+        name="hyrox"
         type="checkbox"
         checked={checked}
         onChange={(e) => {

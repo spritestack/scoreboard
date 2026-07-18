@@ -11,6 +11,7 @@ export async function addResult(formData: FormData) {
   const time = formData.get("time");
   const sport = formData.get("sport");
   const race_date = formData.get("race_date");
+  const hyrox = formData.get("hyrox") === "on" ? true : false;
 
   // const { status, statusText, error } = 
   await supabase
@@ -19,7 +20,8 @@ export async function addResult(formData: FormData) {
       athlete: name,
       time: time,
       category: sport,
-      race_date: race_date
+      race_date: race_date,
+      hyrox: hyrox
     })
 
   // console.log(status);

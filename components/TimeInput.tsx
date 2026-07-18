@@ -31,6 +31,7 @@ export default function TimeInput() {
           inputMode="numeric"
           id="time"
           autoComplete="off"
+          required
 
           minLength={3}
           maxLength={6}
@@ -56,7 +57,6 @@ export default function TimeInput() {
       type="hidden"
       name="time"
       value={millisecondsTime}
-      required
     />
 
   </div>
