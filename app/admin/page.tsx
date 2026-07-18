@@ -1,6 +1,6 @@
 import SportInput from "../../components/SportInput";
 import TimeInput from "../../components/TimeInput";
-import WhiteCheckbox from "../../components/WhiteCheckbox";
+import HyroxInput from "../../components/HyroxInput";
 import { addResult } from "../admin/actions";
 import Link from "next/link";
 
@@ -55,22 +55,8 @@ export default function AdminPage() {
             />
 
           </div>
-          <div>
-            <label htmlFor="hyrox" className="block text-sm font-medium text-gray-300">
-              During hyrox
-            </label>
-            <input
-              type="checkbox"
-              name="hyrox"
-              id="hyrox"
-              defaultChecked={false}
-              className="h-5 w-5 rounded mt-1 accent-white"
-            />
-          </div>
 
-          <WhiteCheckbox>
-            During hyrox
-          </WhiteCheckbox>
+          <HyroxInput />
 
         </div>
 

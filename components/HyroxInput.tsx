@@ -2,13 +2,8 @@
 
 import { useId, useState } from "react";
 
-export default function WhiteCheckbox({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function HyroxInput() {
   const [checked, setChecked] = useState<boolean>(false);
-
   const id = useId();
 
   return (
@@ -29,16 +24,15 @@ export default function WhiteCheckbox({
       />
 
       <span className="block text-sm font-medium text-gray-300">
-        {children}
+        During hyrox
       </span>
-
 
       <div className="
         h-5
         w-5
-        rounded-xs
+        rounded-sm
         border-1
-        border-white
+        border-gray-500
         bg-black
         peer-checked:bg-white
         flex
@@ -47,7 +41,8 @@ export default function WhiteCheckbox({
         transition-colors
       ">
         <svg
-          className="h-5 w-5 text-black peer-checked:block"
+          className="h-5 w-5
+          text-black"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
