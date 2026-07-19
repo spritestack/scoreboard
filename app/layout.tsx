@@ -15,6 +15,12 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Scoreboard",
   description: "Who's got the strength and stamina",
+  themeColor: "#000000",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black",
+    title: "Scoreboard",
+  },
 };
 
 export default function RootLayout({
