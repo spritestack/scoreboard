@@ -52,8 +52,7 @@ export async function login(
     httpOnly: true,
     secure: true,
     sameSite: "strict",
-    maxAge: 60 * 1, // 1 min
-    // maxAge: 60 * 60 * 24 * 30, // 30 days
+    maxAge: 60 * 60 * 24 * 365, // 1 year
   });
 
   redirect("/admin");
