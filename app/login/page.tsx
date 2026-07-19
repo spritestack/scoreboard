@@ -59,9 +59,10 @@ export default function Login() {
           aria-live="polite"
         >
           <p className="text-sm text-red-500">
-            {state.error}
+            {pending ? "" : state.error}
           </p>
         </div>
+
         <button
           type="submit"
           className="border w-full mt-2 p-2 text-orange-500 border-orange-500 rounded-sm"
