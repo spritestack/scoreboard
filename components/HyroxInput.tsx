@@ -33,7 +33,7 @@ export default function HyroxInput() {
         rounded-sm
         border-1
         border-gray-500
-        bg-black
+        bg-background
         peer-checked:bg-white
         flex
         items-center
@@ -42,7 +42,7 @@ export default function HyroxInput() {
       ">
         <svg
           className="h-5 w-5
-          text-black"
+          text-background"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

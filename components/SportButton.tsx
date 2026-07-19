@@ -20,16 +20,15 @@ export function SportButton({
         border-1
         border-gray-500
         text-sm
-        ${
-          selected
-            ? "text-orange-500 border-orange-500"
-            : "hover:bg-gray-900"
+        ${selected
+          ? "text-orange-500 border-orange-500"
+          : "hover:bg-gray-900"
         }
         ${className}
       `}
       {...props}
     >
       {children}
-    </button>
+    </button >
   );
 }
