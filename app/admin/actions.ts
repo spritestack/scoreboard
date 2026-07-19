@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { supabase } from "../lib/supabase";
-import { Result } from "../lib/types";
+import { supabase } from "../_lib/supabase";
+import { Result } from "../_lib/types";
 import { COOKIE_NAME } from "../../middleware";
 
 export async function addResult(formData: FormData) {

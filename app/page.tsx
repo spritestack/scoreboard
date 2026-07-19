@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import ResultsTable from "../components/ResultsTable";
 import Link from "next/link";
-import { supabase } from "./lib/supabase";
+import { supabase } from "./_lib/supabase";
 // import data from "@/data/results.json";
 
 export default async function Home() {

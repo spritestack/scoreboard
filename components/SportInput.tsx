@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { Sport, STORAGE_KEY } from "../app/lib/types";
+import { Sport, STORAGE_KEY } from "../app/_lib/types";
 import { SportButton } from "./SportButton";
 
 

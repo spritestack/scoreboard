@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { formatTime, convertToMilliseconds } from "../app/lib/time";
+import { formatTime, convertToMilliseconds } from "../app/_lib/time";
 
 // TODO
 // - Do we want to store rawTime in DB?
